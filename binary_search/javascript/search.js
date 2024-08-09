@@ -12,6 +12,12 @@ function busca(array, de, ate, valorBuscado) {
     const meio = Math.floor((de + ate) / 2);
     const atual = array[meio];
 
+    // Bloqueio para o javascript não ficar num loop infinito se 
+    // não achar o registro. Como o valor inserido realmente não
+    // existe, chega em um momento que o @de fica maior que o @ate.
+    // Isso gera um loop infinito e um progrema de heap de memória.
+    if (de > ate) return -1;
+
     // Retorno o valor do meio do array, se o valor buscado
     // estiver exatamente neste índice
     if (valorBuscado === atual.preco) return meio;
